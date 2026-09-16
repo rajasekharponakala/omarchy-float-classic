@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.rajasekharponakala.float-classic",
+  "name": "Float Classic",
+  "version": "0.1.0",
+  "author": "Rajasekhar Ponakala",
+  "license": "AGPL-3.0-or-later",
+  "description": "Classic floating window helper for the Omarchy bar \u2014 window count, float/tile toggle, and a details panel with focus/float/center actions. Complements launcher docks by handling window management.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Float Classic",
+    "category": "Windows",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {},
+    "schema": []
+  }
+}
