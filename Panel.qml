@@ -106,7 +106,7 @@ Panel {
           }
 
           Repeater {
-            model: Hyprland.workspaces.values.flatMap(w => w.toplevels.values).slice(0, 8)
+            model: floats.allToplevels().slice(0, 8)
             delegate: Row {
               required property var modelData
               width: contentCol.width
@@ -121,12 +121,13 @@ Panel {
                 font.pixelSize: Style.font.bodySmall
                 elide: Text.ElideRight
                 MouseArea {
+                  id: titleMouseArea
                   anchors.fill: parent
                   hoverEnabled: true
                   cursorShape: Qt.PointingHandCursor
-                  onClicked: floats.focusWindow(parent.modelData)
+                  onClicked: floats.focusWindow(modelData)
                 }
-                PanelToolTip { visible: parent.containsMouse; text: "Click to focus"; fontFamily: root.bar ? root.bar.fontFamily : Style.font.family }
+                PanelToolTip { visible: titleMouseArea.containsMouse; text: "Click to focus"; fontFamily: root.bar ? root.bar.fontFamily : Style.font.family }
               }
 
               Text {
@@ -134,7 +135,7 @@ Panel {
                 color: Color.accent
                 font.family: root.bar ? root.bar.fontFamily : Style.font.family
                 font.pixelSize: Style.font.bodySmall
-                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: floats.focusWindow(parent.modelData) }
+                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: floats.focusWindow(modelData) }
               }
 
               Text {
@@ -143,7 +144,7 @@ Panel {
                 opacity: 0.8
                 font.family: root.bar ? root.bar.fontFamily : Style.font.family
                 font.pixelSize: Style.font.bodySmall
-                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: floats.toggleFloatingActive() }
+                MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: floats.toggleFloatingWindow(modelData) }
               }
             }
           }
