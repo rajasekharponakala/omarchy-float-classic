@@ -24,6 +24,11 @@ QtObject {
     Quickshell.execDetached(["hyprctl", "dispatch", "togglefloating"])
   }
 
+  function toggleFloatingWindow(toplevel) {
+    if (toplevel && toplevel.address)
+      Quickshell.execDetached(["hyprctl", "dispatch", "togglefloating", "address:" + toplevel.address])
+  }
+
   function centerActive() {
     Quickshell.execDetached(["hyprctl", "dispatch", "centerwindow"])
   }
